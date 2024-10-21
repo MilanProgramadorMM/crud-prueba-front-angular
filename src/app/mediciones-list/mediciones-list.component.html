@@ -1,0 +1,30 @@
+<h2>Lista de Mediciones</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ID Indicador</th>
+      <th>Fecha</th>
+      <th>Valor Medido</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+     @for( medicion of mediciones; track medicion.id) {
+        <tr>
+        <td>{{ medicion.id }}</td>
+        <td>{{ medicion.indicadorId  }}</td>
+        <td>{{ medicion.fecha }}</td>
+        <td>{{ medicion.valorMedido }}</td>
+        <td>{{ medicion.descripcion }}</td>
+          <td class="text-end">
+            <button class="btn btn-primary" [routerLink]="['/mediciones', medicion.id, 'edit']">Editar</button>
+          </td>
+          <td class="text-end"> <button class="btn btn-danger" (click)=" deleteMedicion(medicion)">Eliminar</button></td>
+      </tr>
+     }
+      
+  </tbody>
+</table>
+<a [routerLink]="['/new/medicion']" class="btn" style="background-color: #4fca87; color: white;">Agregar Medición</a>

@@ -1,0 +1,45 @@
+<h2 class="mb-5">
+    @if (indicador) {
+        Editar
+    } @else{
+        Crear
+    } Indicador
+</h2>
+
+<div class="row row-cols-1 justify-content-center">
+    @if(form){
+    <form [formGroup]="form" (ngSubmit)="create()">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input id="nombre" type="text" placeholder="Nombre" class="form-control" name="nombre"
+                formControlName="nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="valorMinimo">Valor Minimo</label>
+            <input id="vm" type="number" placeholder="Valor Minimo" class="form-control" formControlName="valorMinimo"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="valorEsperado">Valor Esperado</label>
+            <input id="ve" type="number" placeholder="Valor Esperado" class="form-control"
+                formControlName="valorEsperado">
+        </div>
+        <div class="mb-3">
+            <label for="valorMaximo">Valor Maximo</label>
+            <input id="vma" type="number" placeholder="Valor Maximo" class="form-control" formControlName="valorMaximo">
+        </div>
+        <div class="text-end">
+            <button type="button" class="btn btn-light" routerLink="/indicadores">
+                Cancelar
+            </button>
+            <button type="submit" class="btn" style="background-color: #4fca87; color: white;">
+                @if (indicador) {
+                    Actualizar
+                } @else{
+                    Crear
+                } Indicador
+            </button>
+        </div>
+    </form>
+    }
+</div>

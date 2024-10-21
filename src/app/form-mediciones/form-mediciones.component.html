@@ -1,0 +1,48 @@
+<h2 class="mb-5">
+    @if (medicion) {
+    Editar
+    } @else{
+    Crear
+    } Medicion
+</h2>
+
+<div class="row row-cols-1 justify-content-center">
+    @if(form){
+    <form [formGroup]="form" (ngSubmit)="create()">
+        <div class="mb-3">
+            <label for="indicadorId" class="form-label">Id del Medidor</label>
+            <select id="indicadorId" class="form-control" formControlName="indicadorId" required>
+                <option value="" disabled selected>Selecciona un indicador</option>
+                <option *ngFor="let indicador of indicadores" [value]="indicador.id">{{ indicador.id }}</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="fecha">Fecha</label>
+            <input id="vm" type="date" placeholder="Fecha" class="form-control" formControlName="fecha"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="valormedido">Valor Medido</label>
+            <input id="ve" type="number" placeholder="Valor Medido" class="form-control" formControlName="valorMedido">
+        </div>        
+        
+        <div class="mb-3">
+            <label for="descripcion">Descripcion</label>
+            <input id="vma" type="text" placeholder="Descripcion" class="form-control" formControlName="descripcion">
+        </div>
+        <div class="text-end">
+            <button type="button" class="btn btn-light" routerLink="/mediciones">
+                Cancelar
+            </button>
+            <button type="submit" class="btn" style="background-color: #4fca87; color: white;">
+                @if (medicion) {
+                Actualizar
+                } @else{
+                Crear
+                } Medicion
+            </button>
+        </div>
+    </form>
+    }
+</div>

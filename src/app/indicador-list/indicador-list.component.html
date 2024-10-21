@@ -1,0 +1,30 @@
+<h2>Lista de Indicadores</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>VALOR MINIMO</th>
+            <th>VALOR ESPERADO</th>
+            <th>VALOR MAXIMO</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(indicadores of indicador; track indicadores.id) {
+        <tr>
+            <td>{{ indicadores.id }}</td>
+            <td>{{ indicadores.nombre }}</td>
+            <td>{{ indicadores.valorMinimo }}</td>
+            <td>{{ indicadores.valorEsperado}}</td>
+            <td>{{ indicadores.valorMaximo}}</td>
+            <td class="text-end">
+                <button class="btn btn-primary" [routerLink]="['/', indicadores.id, 'edit']">Editar</button>
+            </td>
+            <td class="text-end"> <button class="btn btn-danger" (click)=" deleteIndicador(indicadores)">Eliminar</button></td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+<a [routerLink]="['/new']" class="btn" style="background-color: #4fca87; color: white;">Agregar indicador</a>
